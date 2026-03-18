@@ -1,17 +1,22 @@
 import asyncio
+import functools
 from asyncua import Client
 
 ENDPOINT = "opc.tcp://localhost:4840/general/simulador/"
 
+async def ainput(prompt: str) -> str:
+    loop = asyncio.get_event_loop()
+    return await loop.run_in_executor(None, functools.partial(input, prompt))
+
 async def write_value():
     async with Client(ENDPOINT) as client:
         while True:
-            nodeid = input("Seleccione el NodeId (ejemplo ns=2;i=2001, ENTER para salir): ").strip()
+            nodeid = (await ainput("Seleccione el NodeId (ejemplo ns=2;i=2001, ENTER para salir): ")).strip()
             if not nodeid:
                 print("Saliendo...")
                 break
-            tipo = input("Seleccione el tipo (int, string): ").strip().lower()
-            valor = input("Seleccione el valor: ").strip()
+            tipo = (await ainput("Seleccione el tipo (int, string): ")).strip().lower()
+            valor = (await ainput("Seleccione el valor: ")).strip()
             node = client.get_node(nodeid)
             try:
                 from asyncua import ua

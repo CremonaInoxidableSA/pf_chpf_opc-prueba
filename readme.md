@@ -2,8 +2,7 @@ python -m venv venv
 venv\Scripts\activate
 pip install asyncua
 
-python server-test/server-opc-random.py
-
+python server-test/server-opc-general.py
 
 python extras/write_node_terminal.py
 Respuesta ejemplo:
