@@ -83,7 +83,7 @@ async def build_structure(server: Server):
     
     
     
-    node4 = await objects.add_object(ua.NodeId(2300, idx), "desarmador")
+    node4 = await objects.add_object(ua.NodeId(2300, idx), "equipo")
     var4_int1 = await node4.add_variable(ua.NodeId(2301, idx), "nivelActual", 0, ua.VariantType.Int32)
     var4_int2 = await node4.add_variable(ua.NodeId(2302, idx), "estadoEquipo", 0, ua.VariantType.Int32)
     var4_int3 = await node4.add_variable(ua.NodeId(2303, idx), "recetaActual", 0, ua.VariantType.Int32)
@@ -101,108 +101,129 @@ async def build_structure(server: Server):
     var5_int1 = await node5.add_variable(ua.NodeId(2401, idx), "recetaBuffer1", 0, ua.VariantType.Int32)
     var5_int2 = await node5.add_variable(ua.NodeId(2402, idx), "torreBuffer1", 0, ua.VariantType.Int32)
     var5_bool1 = await node5.add_variable(ua.NodeId(2403, idx), "buscarBuffer1", False, ua.VariantType.Boolean)
-    var5_bool2 = await node5.add_variable(ua.NodeId(2404, idx), "confirmacionBuffer1", False, ua.VariantType.Boolean)
     nivel1 = await node5.add_object(ua.NodeId(2410, idx), "Nivel1")
     var_n1_cancelaciones = await nivel1.add_variable(ua.NodeId(2411, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n1_finalizado = await nivel1.add_variable(ua.NodeId(2412, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n1_tiempoNivel = await nivel1.add_variable(ua.NodeId(2413, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n1_seleccionado = await nivel1.add_variable(ua.NodeId(2414, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n1_cancelaciones.set_writable()
     await var_n1_finalizado.set_writable()
     await var_n1_tiempoNivel.set_writable()
+    await var_n1_seleccionado.set_writable()
 
     nivel2 = await node5.add_object(ua.NodeId(2420, idx), "Nivel2")
     var_n2_cancelaciones = await nivel2.add_variable(ua.NodeId(2421, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n2_finalizado = await nivel2.add_variable(ua.NodeId(2422, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n2_tiempoNivel = await nivel2.add_variable(ua.NodeId(2423, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n2_seleccionado = await nivel2.add_variable(ua.NodeId(2424, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n2_cancelaciones.set_writable()
     await var_n2_finalizado.set_writable()
     await var_n2_tiempoNivel.set_writable()
+    await var_n2_seleccionado.set_writable()
 
     nivel3 = await node5.add_object(ua.NodeId(2430, idx), "Nivel3")
     var_n3_cancelaciones = await nivel3.add_variable(ua.NodeId(2431, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n3_finalizado = await nivel3.add_variable(ua.NodeId(2432, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n3_tiempoNivel = await nivel3.add_variable(ua.NodeId(2433, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n3_seleccionado = await nivel3.add_variable(ua.NodeId(2434, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n3_cancelaciones.set_writable()
     await var_n3_finalizado.set_writable()
     await var_n3_tiempoNivel.set_writable()
+    await var_n3_seleccionado.set_writable()
 
     nivel4 = await node5.add_object(ua.NodeId(2440, idx), "Nivel4")
     var_n4_cancelaciones = await nivel4.add_variable(ua.NodeId(2441, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n4_finalizado = await nivel4.add_variable(ua.NodeId(2442, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n4_tiempoNivel = await nivel4.add_variable(ua.NodeId(2443, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n4_seleccionado = await nivel4.add_variable(ua.NodeId(2444, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n4_cancelaciones.set_writable()
     await var_n4_finalizado.set_writable()
     await var_n4_tiempoNivel.set_writable()
+    await var_n4_seleccionado.set_writable()
 
     nivel5 = await node5.add_object(ua.NodeId(2450, idx), "Nivel5")
     var_n5_cancelaciones = await nivel5.add_variable(ua.NodeId(2451, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n5_finalizado = await nivel5.add_variable(ua.NodeId(2452, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n5_tiempoNivel = await nivel5.add_variable(ua.NodeId(2453, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n5_seleccionado = await nivel5.add_variable(ua.NodeId(2454, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n5_cancelaciones.set_writable()
     await var_n5_finalizado.set_writable()
     await var_n5_tiempoNivel.set_writable()
+    await var_n5_seleccionado.set_writable()
 
     nivel6 = await node5.add_object(ua.NodeId(2460, idx), "Nivel6")
     var_n6_cancelaciones = await nivel6.add_variable(ua.NodeId(2461, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n6_finalizado = await nivel6.add_variable(ua.NodeId(2462, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n6_tiempoNivel = await nivel6.add_variable(ua.NodeId(2463, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n6_seleccionado = await nivel6.add_variable(ua.NodeId(2464, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n6_cancelaciones.set_writable()
     await var_n6_finalizado.set_writable()
     await var_n6_tiempoNivel.set_writable()
+    await var_n6_seleccionado.set_writable()
 
     nivel7 = await node5.add_object(ua.NodeId(2470, idx), "Nivel7")
     var_n7_cancelaciones = await nivel7.add_variable(ua.NodeId(2471, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n7_finalizado = await nivel7.add_variable(ua.NodeId(2472, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n7_tiempoNivel = await nivel7.add_variable(ua.NodeId(2473, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n7_seleccionado = await nivel7.add_variable(ua.NodeId(2474, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n7_cancelaciones.set_writable()
     await var_n7_finalizado.set_writable()
     await var_n7_tiempoNivel.set_writable()
+    await var_n7_seleccionado.set_writable()
 
     nivel8 = await node5.add_object(ua.NodeId(2480, idx), "Nivel8")
     var_n8_cancelaciones = await nivel8.add_variable(ua.NodeId(2481, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n8_finalizado = await nivel8.add_variable(ua.NodeId(2482, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n8_tiempoNivel = await nivel8.add_variable(ua.NodeId(2483, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n8_seleccionado = await nivel8.add_variable(ua.NodeId(2484, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n8_cancelaciones.set_writable()
     await var_n8_finalizado.set_writable()
     await var_n8_tiempoNivel.set_writable()
+    await var_n8_seleccionado.set_writable()
 
     nivel9 = await node5.add_object(ua.NodeId(2490, idx), "Nivel9")
     var_n9_cancelaciones = await nivel9.add_variable(ua.NodeId(2491, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n9_finalizado = await nivel9.add_variable(ua.NodeId(2492, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n9_tiempoNivel = await nivel9.add_variable(ua.NodeId(2493, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n9_seleccionado = await nivel9.add_variable(ua.NodeId(2494, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n9_cancelaciones.set_writable()
     await var_n9_finalizado.set_writable()
     await var_n9_tiempoNivel.set_writable()
+    await var_n9_seleccionado.set_writable()
 
     nivel10 = await node5.add_object(ua.NodeId(2500, idx), "Nivel10")
     var_n10_cancelaciones = await nivel10.add_variable(ua.NodeId(2501, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n10_finalizado = await nivel10.add_variable(ua.NodeId(2502, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n10_tiempoNivel = await nivel10.add_variable(ua.NodeId(2503, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n10_seleccionado = await nivel10.add_variable(ua.NodeId(2504, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n10_cancelaciones.set_writable()
     await var_n10_finalizado.set_writable()
     await var_n10_tiempoNivel.set_writable()
+    await var_n10_seleccionado.set_writable()
 
     nivel11 = await node5.add_object(ua.NodeId(2510, idx), "Nivel11")
     var_n11_cancelaciones = await nivel11.add_variable(ua.NodeId(2511, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n11_finalizado = await nivel11.add_variable(ua.NodeId(2512, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n11_tiempoNivel = await nivel11.add_variable(ua.NodeId(2513, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n11_seleccionado = await nivel11.add_variable(ua.NodeId(2514, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n11_cancelaciones.set_writable()
     await var_n11_finalizado.set_writable()
     await var_n11_tiempoNivel.set_writable()
+    await var_n11_seleccionado.set_writable()
 
     nivel12 = await node5.add_object(ua.NodeId(2520, idx), "Nivel12")
     var_n12_cancelaciones = await nivel12.add_variable(ua.NodeId(2521, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n12_finalizado = await nivel12.add_variable(ua.NodeId(2522, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n12_tiempoNivel = await nivel12.add_variable(ua.NodeId(2523, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n12_seleccionado = await nivel12.add_variable(ua.NodeId(2524, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n12_cancelaciones.set_writable()
     await var_n12_finalizado.set_writable()
     await var_n12_tiempoNivel.set_writable()
+    await var_n12_seleccionado.set_writable()
 
     await var5_int1.set_writable()
     await var5_int2.set_writable()
     await var5_bool1.set_writable()
-    await var5_bool2.set_writable()
-
 
 
 
@@ -211,117 +232,143 @@ async def build_structure(server: Server):
     var6_int1 = await node6.add_variable(ua.NodeId(2801, idx), "recetaBuffer2", 0, ua.VariantType.Int32)
     var6_int2 = await node6.add_variable(ua.NodeId(2802, idx), "torreBuffer2", 0, ua.VariantType.Int32)
     var6_bool1 = await node6.add_variable(ua.NodeId(2803, idx), "buscarBuffer2", False, ua.VariantType.Boolean)
-    var6_bool2 = await node6.add_variable(ua.NodeId(2804, idx), "confirmacionBuffer2", False, ua.VariantType.Boolean)
     nivel1 = await node6.add_object(ua.NodeId(2810, idx), "Nivel1")
     var_n1_cancelaciones = await nivel1.add_variable(ua.NodeId(2811, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n1_finalizado = await nivel1.add_variable(ua.NodeId(2812, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n1_tiempoNivel = await nivel1.add_variable(ua.NodeId(2813, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n1_seleccionado = await nivel1.add_variable(ua.NodeId(2814, idx), "seleccionado", True, ua.VariantType.Boolean)
+    await var6_bool1.set_writable()
+    await var6_int1.set_writable()
+    await var6_int2.set_writable()
     await var_n1_cancelaciones.set_writable()
     await var_n1_finalizado.set_writable()
     await var_n1_tiempoNivel.set_writable()
+    await var_n1_seleccionado.set_writable()
 
     nivel2 = await node6.add_object(ua.NodeId(2820, idx), "Nivel2")
     var_n2_cancelaciones = await nivel2.add_variable(ua.NodeId(2821, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n2_finalizado = await nivel2.add_variable(ua.NodeId(2822, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n2_tiempoNivel = await nivel2.add_variable(ua.NodeId(2823, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n2_seleccionado = await nivel2.add_variable(ua.NodeId(2824, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n2_cancelaciones.set_writable()
     await var_n2_finalizado.set_writable()
     await var_n2_tiempoNivel.set_writable()
+    await var_n2_seleccionado.set_writable()
 
     nivel3 = await node6.add_object(ua.NodeId(2830, idx), "Nivel3")
     var_n3_cancelaciones = await nivel3.add_variable(ua.NodeId(2831, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n3_finalizado = await nivel3.add_variable(ua.NodeId(2832, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n3_tiempoNivel = await nivel3.add_variable(ua.NodeId(2833, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n3_seleccionado = await nivel3.add_variable(ua.NodeId(2834, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n3_cancelaciones.set_writable()
     await var_n3_finalizado.set_writable()
     await var_n3_tiempoNivel.set_writable()
+    await var_n3_seleccionado.set_writable()
 
     nivel4 = await node6.add_object(ua.NodeId(2840, idx), "Nivel4")
     var_n4_cancelaciones = await nivel4.add_variable(ua.NodeId(2841, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n4_finalizado = await nivel4.add_variable(ua.NodeId(2842, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n4_tiempoNivel = await nivel4.add_variable(ua.NodeId(2843, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n4_seleccionado = await nivel4.add_variable(ua.NodeId(2844, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n4_cancelaciones.set_writable()
     await var_n4_finalizado.set_writable()
     await var_n4_tiempoNivel.set_writable()
+    await var_n4_seleccionado.set_writable()
 
     nivel5 = await node6.add_object(ua.NodeId(2850, idx), "Nivel5")
     var_n5_cancelaciones = await nivel5.add_variable(ua.NodeId(2851, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n5_finalizado = await nivel5.add_variable(ua.NodeId(2852, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n5_tiempoNivel = await nivel5.add_variable(ua.NodeId(2853, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n5_seleccionado = await nivel5.add_variable(ua.NodeId(2854, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n5_cancelaciones.set_writable()
     await var_n5_finalizado.set_writable()
     await var_n5_tiempoNivel.set_writable()
+    await var_n5_seleccionado.set_writable()
 
     nivel6 = await node6.add_object(ua.NodeId(2860, idx), "Nivel6")
     var_n6_cancelaciones = await nivel6.add_variable(ua.NodeId(2861, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n6_finalizado = await nivel6.add_variable(ua.NodeId(2862, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n6_tiempoNivel = await nivel6.add_variable(ua.NodeId(2863, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n6_seleccionado = await nivel6.add_variable(ua.NodeId(2864, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n6_cancelaciones.set_writable()
     await var_n6_finalizado.set_writable()
     await var_n6_tiempoNivel.set_writable()
+    await var_n6_seleccionado.set_writable()
 
     nivel7 = await node6.add_object(ua.NodeId(2870, idx), "Nivel7")
     var_n7_cancelaciones = await nivel7.add_variable(ua.NodeId(2871, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n7_finalizado = await nivel7.add_variable(ua.NodeId(2872, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n7_tiempoNivel = await nivel7.add_variable(ua.NodeId(2873, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n7_seleccionado = await nivel7.add_variable(ua.NodeId(2874, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n7_cancelaciones.set_writable()
     await var_n7_finalizado.set_writable()
     await var_n7_tiempoNivel.set_writable()
+    await var_n7_seleccionado.set_writable()
 
     nivel8 = await node6.add_object(ua.NodeId(2880, idx), "Nivel8")
     var_n8_cancelaciones = await nivel8.add_variable(ua.NodeId(2881, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n8_finalizado = await nivel8.add_variable(ua.NodeId(2882, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n8_tiempoNivel = await nivel8.add_variable(ua.NodeId(2883, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n8_seleccionado = await nivel8.add_variable(ua.NodeId(2884, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n8_cancelaciones.set_writable()
     await var_n8_finalizado.set_writable()
     await var_n8_tiempoNivel.set_writable()
+    await var_n8_seleccionado.set_writable()
 
     nivel9 = await node6.add_object(ua.NodeId(2890, idx), "Nivel9")
     var_n9_cancelaciones = await nivel9.add_variable(ua.NodeId(2891, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n9_finalizado = await nivel9.add_variable(ua.NodeId(2892, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n9_tiempoNivel = await nivel9.add_variable(ua.NodeId(2893, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n9_seleccionado = await nivel9.add_variable(ua.NodeId(2894, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n9_cancelaciones.set_writable()
     await var_n9_finalizado.set_writable()
     await var_n9_tiempoNivel.set_writable()
+    await var_n9_seleccionado.set_writable()
 
     nivel10 = await node6.add_object(ua.NodeId(2900, idx), "Nivel10")
     var_n10_cancelaciones = await nivel10.add_variable(ua.NodeId(2901, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n10_finalizado = await nivel10.add_variable(ua.NodeId(2902, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n10_tiempoNivel = await nivel10.add_variable(ua.NodeId(2903, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n10_seleccionado = await nivel10.add_variable(ua.NodeId(2904, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n10_cancelaciones.set_writable()
     await var_n10_finalizado.set_writable()
     await var_n10_tiempoNivel.set_writable()
+    await var_n10_seleccionado.set_writable()
 
     nivel11 = await node6.add_object(ua.NodeId(2910, idx), "Nivel11")
     var_n11_cancelaciones = await nivel11.add_variable(ua.NodeId(2911, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n11_finalizado = await nivel11.add_variable(ua.NodeId(2912, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n11_tiempoNivel = await nivel11.add_variable(ua.NodeId(2913, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n11_seleccionado = await nivel11.add_variable(ua.NodeId(2914, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n11_cancelaciones.set_writable()
     await var_n11_finalizado.set_writable()
     await var_n11_tiempoNivel.set_writable()
+    await var_n11_seleccionado.set_writable()
 
     nivel12 = await node6.add_object(ua.NodeId(2920, idx), "Nivel12")
     var_n12_cancelaciones = await nivel12.add_variable(ua.NodeId(2921, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n12_finalizado = await nivel12.add_variable(ua.NodeId(2922, idx), "finalizado", False, ua.VariantType.Boolean)
     var_n12_tiempoNivel = await nivel12.add_variable(ua.NodeId(2923, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n12_seleccionado = await nivel12.add_variable(ua.NodeId(2924, idx), "seleccionado", True, ua.VariantType.Boolean)
     await var_n12_cancelaciones.set_writable()
     await var_n12_finalizado.set_writable()
     await var_n12_tiempoNivel.set_writable()
+    await var_n12_seleccionado.set_writable()
 
     await var5_int1.set_writable()
     await var5_int2.set_writable()
     await var5_bool1.set_writable()
-    await var5_bool2.set_writable()
-
 
 
     node7 = await objects.add_object(ua.NodeId(2930, idx), "ciclo")
     var7_bool1 = await node7.add_variable(ua.NodeId(2931, idx), "inicioCiclo", False, ua.VariantType.Boolean)
     var7_bool2 = await node7.add_variable(ua.NodeId(2932, idx), "finCiclo", False, ua.VariantType.Boolean)
     var7_bool3 = await node7.add_variable(ua.NodeId(2933, idx), "falloCiclos", False, ua.VariantType.Boolean)
+    var7_int1 = await node7.add_variable(ua.NodeId(2934, idx), "nivelesSeleccionados", 0, ua.VariantType.Int32)
     await var7_bool1.set_writable()
     await var7_bool2.set_writable()
     await var7_bool3.set_writable()
+    await var7_int1.set_writable()
 
     return {
         "nodo1": {
@@ -368,7 +415,6 @@ async def build_structure(server: Server):
             "int1": var5_int1,
             "int2": var5_int2,
             "bool1": var5_bool1,
-            "bool2": var5_bool2,
             "n1_cancelaciones": var_n1_cancelaciones,
             "n1_finalizado": var_n1_finalizado,
             "n1_tiempoNivel": var_n1_tiempoNivel,
@@ -410,7 +456,6 @@ async def build_structure(server: Server):
             "int1": var6_int1,
             "int2": var6_int2,
             "bool1": var6_bool1,
-            "bool2": var6_bool2,
             "n1_cancelaciones": var_n1_cancelaciones,
             "n1_finalizado": var_n1_finalizado,
             "n1_tiempoNivel": var_n1_tiempoNivel,
@@ -451,7 +496,8 @@ async def build_structure(server: Server):
         "nodo7": {
             "bool1": var7_bool1,
             "bool2": var7_bool2,
-            "bool3": var7_bool3
+            "bool3": var7_bool3,
+            "int1": var7_int1
         }
     }
 
