@@ -88,7 +88,7 @@ async def build_structure(server: Server):
     var4_int2 = await node4.add_variable(ua.NodeId(2302, idx), "estadoEquipo", 0, ua.VariantType.Int32)
     var4_int3 = await node4.add_variable(ua.NodeId(2303, idx), "recetaActual", 0, ua.VariantType.Int32)
     var4_int4 = await node4.add_variable(ua.NodeId(2304, idx), "recetaProxima", 0, ua.VariantType.Int32)
-    var4_int5 = await node4.add_variable(ua.NodeId(2305, idx), "recetaProxima", 0, ua.VariantType.Int32)
+    var4_int5 = await node4.add_variable(ua.NodeId(2305, idx), "numeroEquipo", 0, ua.VariantType.Int32)
     await var4_int1.set_writable()
     await var4_int2.set_writable()
     await var4_int3.set_writable()
