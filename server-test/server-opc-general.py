@@ -70,11 +70,11 @@ async def build_structure(server: Server):
     
     
     
-    node3 = await objects.add_object(ua.NodeId(2200, idx), "torre")
+    node3 = await objects.add_object(ua.NodeId(2200, idx), "rack")
     var3_int1 = await node3.add_variable(ua.NodeId(2201, idx), "hBusqueda", 0, ua.VariantType.Int32)
     var3_int2 = await node3.add_variable(ua.NodeId(2202, idx), "hGuardado", 0, ua.VariantType.Int32)
-    var3_int3 = await node3.add_variable(ua.NodeId(2203, idx), "torreActual", 0, ua.VariantType.Int32)
-    var3_int4 = await node3.add_variable(ua.NodeId(2204, idx), "torreProxima", 0, ua.VariantType.Int32)
+    var3_int3 = await node3.add_variable(ua.NodeId(2203, idx), "rackActual", 0, ua.VariantType.Int32)
+    var3_int4 = await node3.add_variable(ua.NodeId(2204, idx), "rackProximo", 0, ua.VariantType.Int32)
     await var3_int1.set_writable()
     await var3_int2.set_writable()
     await var3_int3.set_writable()
@@ -88,10 +88,12 @@ async def build_structure(server: Server):
     var4_int2 = await node4.add_variable(ua.NodeId(2302, idx), "estadoEquipo", 0, ua.VariantType.Int32)
     var4_int3 = await node4.add_variable(ua.NodeId(2303, idx), "recetaActual", 0, ua.VariantType.Int32)
     var4_int4 = await node4.add_variable(ua.NodeId(2304, idx), "recetaProxima", 0, ua.VariantType.Int32)
+    var4_int5 = await node4.add_variable(ua.NodeId(2305, idx), "recetaProxima", 0, ua.VariantType.Int32)
     await var4_int1.set_writable()
     await var4_int2.set_writable()
     await var4_int3.set_writable()
     await var4_int4.set_writable()
+    await var4_int5.set_writable()
 
     
     
@@ -99,8 +101,13 @@ async def build_structure(server: Server):
     
     node5 = await objects.add_object(ua.NodeId(2400, idx), "buffer1")
     var5_int1 = await node5.add_variable(ua.NodeId(2401, idx), "recetaBuffer1", 0, ua.VariantType.Int32)
-    var5_int2 = await node5.add_variable(ua.NodeId(2402, idx), "torreBuffer1", 0, ua.VariantType.Int32)
+    var5_int2 = await node5.add_variable(ua.NodeId(2402, idx), "rackBuffer1", 0, ua.VariantType.Int32)
     var5_bool1 = await node5.add_variable(ua.NodeId(2403, idx), "buscarBuffer1", False, ua.VariantType.Boolean)
+    var5_int3 = await node5.add_variable(ua.NodeId(2404, idx), "pausaBuffer1", 0, ua.VariantType.Int32)
+    await var5_int1.set_writable()
+    await var5_int2.set_writable()
+    await var5_bool1.set_writable()
+    await var5_int3.set_writable()
     nivel1 = await node5.add_object(ua.NodeId(2410, idx), "Nivel1")
     var_n1_cancelaciones = await nivel1.add_variable(ua.NodeId(2411, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n1_finalizado = await nivel1.add_variable(ua.NodeId(2412, idx), "finalizado", False, ua.VariantType.Boolean)
@@ -221,17 +228,24 @@ async def build_structure(server: Server):
     await var_n12_tiempoNivel.set_writable()
     await var_n12_seleccionado.set_writable()
 
-    await var5_int1.set_writable()
-    await var5_int2.set_writable()
-    await var5_bool1.set_writable()
 
+    nivel13 = await node5.add_object(ua.NodeId(2530, idx), "Nivel13")
+    var_n13_cancelaciones = await nivel13.add_variable(ua.NodeId(2531, idx), "cancelaciones", [], ua.VariantType.Int32)
+    var_n13_finalizado = await nivel13.add_variable(ua.NodeId(2532, idx), "finalizado", False, ua.VariantType.Boolean)
+    var_n13_tiempoNivel = await nivel13.add_variable(ua.NodeId(2533, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n13_seleccionado = await nivel13.add_variable(ua.NodeId(2534, idx), "seleccionado", True, ua.VariantType.Boolean)
+    await var_n13_cancelaciones.set_writable()
+    await var_n13_finalizado.set_writable()
+    await var_n13_tiempoNivel.set_writable()
+    await var_n13_seleccionado.set_writable()
 
 
 
     node6 = await objects.add_object(ua.NodeId(2800, idx), "buffer2")
     var6_int1 = await node6.add_variable(ua.NodeId(2801, idx), "recetaBuffer2", 0, ua.VariantType.Int32)
-    var6_int2 = await node6.add_variable(ua.NodeId(2802, idx), "torreBuffer2", 0, ua.VariantType.Int32)
+    var6_int2 = await node6.add_variable(ua.NodeId(2802, idx), "rackBuffer2", 0, ua.VariantType.Int32)
     var6_bool1 = await node6.add_variable(ua.NodeId(2803, idx), "buscarBuffer2", False, ua.VariantType.Boolean)
+    var6_int3 = await node6.add_variable(ua.NodeId(2804, idx), "pausaBuffer2", 0, ua.VariantType.Int32)
     nivel1 = await node6.add_object(ua.NodeId(2810, idx), "Nivel1")
     var_n1_cancelaciones = await nivel1.add_variable(ua.NodeId(2811, idx), "cancelaciones", [], ua.VariantType.Int32)
     var_n1_finalizado = await nivel1.add_variable(ua.NodeId(2812, idx), "finalizado", False, ua.VariantType.Boolean)
@@ -240,6 +254,7 @@ async def build_structure(server: Server):
     await var6_bool1.set_writable()
     await var6_int1.set_writable()
     await var6_int2.set_writable()
+    await var6_int3.set_writable()
     await var_n1_cancelaciones.set_writable()
     await var_n1_finalizado.set_writable()
     await var_n1_tiempoNivel.set_writable()
@@ -355,9 +370,16 @@ async def build_structure(server: Server):
     await var_n12_tiempoNivel.set_writable()
     await var_n12_seleccionado.set_writable()
 
-    await var5_int1.set_writable()
-    await var5_int2.set_writable()
-    await var5_bool1.set_writable()
+    nivel13 = await node6.add_object(ua.NodeId(2925, idx), "Nivel13")
+    var_n13_cancelaciones = await nivel13.add_variable(ua.NodeId(2926, idx), "cancelaciones", [], ua.VariantType.Int32)
+    var_n13_finalizado = await nivel13.add_variable(ua.NodeId(2927, idx), "finalizado", False, ua.VariantType.Boolean)
+    var_n13_tiempoNivel = await nivel13.add_variable(ua.NodeId(2928, idx), "tiempoNivel", 0, ua.VariantType.Int32)
+    var_n13_seleccionado = await nivel13.add_variable(ua.NodeId(2929, idx), "seleccionado", True, ua.VariantType.Boolean)
+    await var_n13_cancelaciones.set_writable()
+    await var_n13_finalizado.set_writable()
+    await var_n13_tiempoNivel.set_writable()
+    await var_n13_seleccionado.set_writable()
+
 
 
     node7 = await objects.add_object(ua.NodeId(2930, idx), "ciclo")
@@ -409,12 +431,14 @@ async def build_structure(server: Server):
             "int1": var4_int1,
             "int2": var4_int2,
             "int3": var4_int3,
-            "int4": var4_int4
+            "int4": var4_int4,
+            "int5": var4_int5
         },
         "nodo5": {
             "int1": var5_int1,
             "int2": var5_int2,
             "bool1": var5_bool1,
+            "int3": var5_int3,
             "n1_cancelaciones": var_n1_cancelaciones,
             "n1_finalizado": var_n1_finalizado,
             "n1_tiempoNivel": var_n1_tiempoNivel,
@@ -450,12 +474,16 @@ async def build_structure(server: Server):
             "n11_tiempoNivel": var_n11_tiempoNivel,
             "n12_cancelaciones": var_n12_cancelaciones,
             "n12_finalizado": var_n12_finalizado,
-            "n12_tiempoNivel": var_n12_tiempoNivel
+            "n12_tiempoNivel": var_n12_tiempoNivel,
+            "n13_cancelaciones": var_n13_cancelaciones,
+            "n13_finalizado": var_n13_finalizado,
+            "n13_tiempoNivel": var_n13_tiempoNivel
         },
         "nodo6": {
             "int1": var6_int1,
             "int2": var6_int2,
             "bool1": var6_bool1,
+            "int3": var6_int3,
             "n1_cancelaciones": var_n1_cancelaciones,
             "n1_finalizado": var_n1_finalizado,
             "n1_tiempoNivel": var_n1_tiempoNivel,
@@ -491,7 +519,10 @@ async def build_structure(server: Server):
             "n11_tiempoNivel": var_n11_tiempoNivel,
             "n12_cancelaciones": var_n12_cancelaciones,
             "n12_finalizado": var_n12_finalizado,
-            "n12_tiempoNivel": var_n12_tiempoNivel
+            "n12_tiempoNivel": var_n12_tiempoNivel,
+            "n13_cancelaciones": var_n13_cancelaciones,
+            "n13_finalizado": var_n13_finalizado,
+            "n13_tiempoNivel": var_n13_tiempoNivel
         },
         "nodo7": {
             "bool1": var7_bool1,
