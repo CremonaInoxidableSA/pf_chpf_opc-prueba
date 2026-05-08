@@ -382,9 +382,11 @@ async def build_structure(server: Server):
     var7_bool1 = await node7.add_variable(ua.NodeId(2931, idx), "inicioCiclo", False, ua.VariantType.Boolean)
     var7_bool2 = await node7.add_variable(ua.NodeId(2932, idx), "finCiclo", False, ua.VariantType.Boolean)
     var7_bool3 = await node7.add_variable(ua.NodeId(2933, idx), "falloCiclos", False, ua.VariantType.Boolean)
+    var7_int1 = await node7.add_variable(ua.NodeId(2934, idx), "nivelesSeleccionados", 0, ua.VariantType.Int32)
     await var7_bool1.set_writable()
     await var7_bool2.set_writable()
     await var7_bool3.set_writable()
+    await var7_int1.set_writable()
 
     return {
         "nodo1": {
