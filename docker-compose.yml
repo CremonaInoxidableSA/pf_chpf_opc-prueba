@@ -1,0 +1,23 @@
+networks:
+  macvlan_network:
+    driver: macvlan
+    driver_opts:
+      parent: eno1
+    ipam:
+      config:
+        - subnet: 192.168.10.0/24
+          gateway: 192.168.10.240
+
+services:
+  opc_server:
+    build: .
+    container_name: opc_server_container
+    restart: always
+    ports:
+      - "4840:4840"
+    volumes:
+      - .:/app
+    command: python server-test/server-opc-general.py
+    networks:
+      macvlan_network:
+        ipv4_address: 192.168.10.5
